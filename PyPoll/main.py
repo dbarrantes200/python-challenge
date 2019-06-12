@@ -26,6 +26,22 @@ with open(election_csv, 'r') as csvfile:
         elif row['Candidate'] == "O'Tooley":
             Otooley_count = Otooley_count + 1
             Otooley_average =  (Otooley_count / row_count)        
+Max = Khan_count
+
+if Khan_count > Correy_count and Khan_count > Li_count and Khan_count > Otooley_count:
+    Max = Khan_count
+    winner = "Khan"    
+elif Correy_count > Khan_count and Correy_count  > Li_count and Correy_count  > Otooley_count:
+    Max = Correy_count
+    winner = "Khan"    
+elif Li_count > Khan_count and Li_count > Correy_count  and Li_count > Otooley_count:
+    Max = Li_count
+    winner = "Li"
+elif Otooley_count > Khan_count and Otooley_count > Correy_count  and Otooley_count > Li_count:
+    Max = Otooley_count
+    winner = "O'Tooley"      
+    pass
+#Print (Correy_count)
 
 # Print Election Results          
 print ("Election Results")
@@ -37,7 +53,7 @@ print (("Correy "+"{:.3%}".format(Correy_average)), "(",(Correy_count),")")
 print (("Li "+"{:.3%}".format(Li_average)), "(",(Li_count),")")    
 print (("O'Tooley "+"{:.3%}".format(Otooley_average)), "(",(Otooley_count),")")    
 print ("-------------------------------")
-print ("Winner: Khan")
+print ("Winner", winner)
 print ("-------------------------------")
 output_file = os.path.join("Election Results Report.txt")
 
@@ -57,5 +73,5 @@ with open(output_file, "w") as text_file:
     Otooley_string = ((Otooley_average), (Otooley_count))    
     text_file.write (("O'Tooley {}\n".format(Otooley_string)))
     text_file.write ("-------------------------------\n")
-    text_file.write ("Winner {}\n".format("Khan"))
+    text_file.write ("Winner {}\n".format(winner))
     text_file.write ("-------------------------------\n")    
